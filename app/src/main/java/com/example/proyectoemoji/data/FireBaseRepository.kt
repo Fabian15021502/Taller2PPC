@@ -1,6 +1,10 @@
 package com.example.proyectoemoji.data
 
-import com.example.proyectoemoji.model.
+
+import androidx.compose.animation.core.copy
+import androidx.compose.ui.test.filter
+import androidx.wear.compose.foundation.size
+import com.example.proyectoemoji.model.ChatMessage
 import com.example.proyectoemoji.models.GameRoom
 import com.example.proyectoemoji.models.Player
 import com.google.firebase.firestore.FirebaseFirestore
@@ -11,9 +15,6 @@ object FirebaseRepository {
 
     private val db = FirebaseFirestore.getInstance()
 
-    // ===============================================================
-    // CREATE ROOM
-    // ===============================================================
     suspend fun createRoom(roomId: String, creator: Player) {
         val roomRef = db.collection("rooms").document(roomId)
 
@@ -145,6 +146,8 @@ object FirebaseRepository {
     // ===============================================================
     // SEND CHAT MESSAGE
     // ===============================================================
+    // Error 2: El tipo "ChatMessage" ahora se resuelve correctamente
+    // gracias a la importación corregida.
     suspend fun sendChatMessage(roomId: String, message: ChatMessage) {
         val chatRef = db.collection("rooms")
             .document(roomId)
